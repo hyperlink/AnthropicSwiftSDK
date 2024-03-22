@@ -25,24 +25,19 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "AnthropicSwiftSDK",
-            plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]
-        ),
+            plugins: [.plugin(name: "SwiftLintPlugin", package: "SwiftLint")]),
         .testTarget(
             name: "AnthropicSwiftSDKTests",
             dependencies: ["AnthropicSwiftSDK"]),
         .macro(
-            name: "AnthropicCallableMacro",
+            name: "AnthropicCallableFunction",
             dependencies: [
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-                "AnthropicSwiftSDK"
-            ]
-        ),
+                "AnthropicSwiftSDK"]),
         .target(
-            name: "AnthropicCallableFunction",
+            name: "AnthropicCallableFunctions",
             dependencies: [
-                "AnthropicCallableMacro"
-            ]
-        )
+                "AnthropicCallableFunction"]),
     ]
 )
